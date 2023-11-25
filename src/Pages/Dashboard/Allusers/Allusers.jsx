@@ -1,10 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxios from '../../../Hooks/UseAxios';
-import { FaUser } from 'react-icons/fa';
+import { FaRemoveFormat, FaTrash, FaUser } from 'react-icons/fa';
+import useAxiosSecure from '../../../Hooks/UseAxiosSecure';
+import Swal from 'sweetalert2';
 
 const Allusers = () => {
   const axiosPublic = useAxios();
-  const { data: users = [] } = useQuery({
+  const axiosSecure=useAxiosSecure()
+  const { data: users = [],refetch } = useQuery({
     queryKey: ['allusers'],
     queryFn: async () => {
       try {
@@ -17,6 +20,43 @@ const Allusers = () => {
   });
 
   console.log(users, 'helloooo');
+
+
+
+
+
+
+
+  const handleDeleteUser = user => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            axiosSecure.delete(`/user/${user._id}`)
+                .then(res => {
+                    if (res.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                })
+        }
+    });
+}
+
+
+
+
 
   return (
 <div className="overflow-x-auto bg-slate-200">
@@ -43,7 +83,7 @@ const Allusers = () => {
         <button  className="btn border border-blue-900 bg-blue-200 px-6">
          <FaUser></FaUser> user</button>
         </td>
-        <td>delete</td>
+        <td> <button onClick={()=>handleDeleteUser(users)} className='text-red-800'><FaTrash></FaTrash></button></td>
       </tr>)}
       
      
