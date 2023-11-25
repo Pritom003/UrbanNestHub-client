@@ -4,14 +4,16 @@ import google from '../../assets/icons8-google.svg';
 import Navbar from '../Shared/Navbar/Navbar';
 import Footer from '../Shared/Footer';
 import useAuth from '../../Hooks/UseAuth';
+import useAxios from '../../Hooks/UseAxios';
+import Swal from 'sweetalert2';
 const Login = () => {
 
   const location=useLocation()
   console.log(location);
   const navigate=useNavigate()
-  const { loginuser} = useAuth()
+  const { loginuser,creategooglesignup} = useAuth()
 
-
+const axiosPublic=useAxios()
 
 
 
@@ -27,8 +29,10 @@ const Login = () => {
       console.log(res.user);
       const user={email}
       console.log(user);
-     navigate(location?.state? location.state :'/')
+
     
+     navigate(location?.state? location.state :'/')
+
   })
     .catch((error) => {
       console.error(error);
@@ -46,6 +50,32 @@ const Login = () => {
     //       })})
     // };
 
+
+
+  //   const handleGoogleSignIn = () =>{
+  //     creategooglesignup()
+  //     .then(result =>{
+  //         console.log(result.user);
+  //         const userInfo = {
+  //             email: result.user?.email,
+  //             name: result.user?.displayName
+  //         }
+  //         axiosPublic.post('/user', userInfo)
+  //         .then(res =>{
+  //             console.log(res.data);
+  //             if(res.data.insertedId){
+  //                  Swal.fire({
+  //                 position: 'top-end',
+  //                 icon: 'success',
+  //                 title: 'Your registration was successful!',
+  //                 showConfirmButton: false,
+  //                 timer: 1500,
+  //               });
+  //             }
+  //             navigate('/');
+  //         })
+  //     })
+  // }
 
 
 
@@ -104,11 +134,11 @@ const Login = () => {
   
   
   
-       <div>
-    <button className='flex h-20 btn btn-outline text-white bg-[#265073] justify-center  items-center align-middle'> Login
+       {/* <div>
+    <button onClick={handleGoogleSignIn} className='flex h-20 btn btn-outline text-white bg-[#265073] justify-center  items-center align-middle'> Login
     <img className='h-[60px]' src={google} alt="" />Google </button>
 
-    </div>
+    </div> */}
     </div>
   </div>
   <Footer></Footer>

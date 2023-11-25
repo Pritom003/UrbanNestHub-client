@@ -1,9 +1,14 @@
 
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/icons8-real-estate-50 (1).png';
+import useAuth from '../../../Hooks/UseAuth';
 const Navbar = () => {
-
-
+const {logout,user}=useAuth()
+    const handleLogOut = () => {
+        logout()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
 
 
 
@@ -12,6 +17,14 @@ const Navbar = () => {
         <li><Link to="/login">login</Link></li>
         <li><Link to="/regi">signup</Link></li>
         <li><Link to="/dashboard">Dashboard</Link></li>
+        {
+            user ? <>
+                {/* <span>{user?.displayName}</span> */}
+                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+            </> : <>
+                <li><Link to="/login">Login</Link></li>
+            </>
+        }
        
        
 

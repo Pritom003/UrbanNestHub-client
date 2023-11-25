@@ -67,24 +67,16 @@ console.log(role,image,name,email,password);
 
                 navigate("/");
               }
+              else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'inseted id null',
+                  footer: '<a href=""> try again</a>',
+                });
+              }
             })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
             })
             .catch((err) => {
               console.error(err, 'error img');
@@ -127,6 +119,9 @@ console.log(role,image,name,email,password);
               title: "Successfully Login!",
               icon: "success"
             });
+            navigate(location?.state ? location.state : "/");
+          }else{
+            console.log('this user already exist');
             navigate(location?.state ? location.state : "/");
           }
         })
