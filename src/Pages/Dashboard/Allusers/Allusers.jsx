@@ -29,6 +29,7 @@ const Allusers = () => {
         <th>Email</th>
         <th>role</th>
         <th>make admin</th>
+        <th>remove user</th>
       </tr>
     </thead>
     <tbody>
@@ -42,7 +43,9 @@ const Allusers = () => {
         <button  className="btn border border-blue-900 bg-blue-200 px-6">
          <FaUser></FaUser> user</button>
         </td>
+        <td>delete</td>
       </tr>)}
+      
      
      
     </tbody>

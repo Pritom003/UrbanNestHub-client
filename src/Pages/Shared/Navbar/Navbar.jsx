@@ -71,9 +71,31 @@ const {logout,user}=useAuth()
                 {NavLinks}
             </ul>
         </div>
-        <div className="navbar-end">
-            <a className="btn">Get started</a>
-        </div>
+        {
+    user ?
+    
+    <div className=" mt-6">
+    <div className="tooltip" data-tip={user.displayName}>
+    <div className="avatar p-4">
+  <div className="w-10  rounded-full ring ring-blue-950 ring-offset-base-100 ring-offset-2">
+    <img src={user.photoURL} />
+  </div>
+</div>
+
+    
+  </div>
+    </div> 
+
+
+
+:''
+   }
+
+
+
+
+
+
     </div>
 </>
   );
