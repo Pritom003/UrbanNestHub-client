@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/icons8-real-estate-50 (1).png';
 const Navbar = () => {
@@ -11,6 +11,7 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/login">login</Link></li>
         <li><Link to="/regi">signup</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
        
        
 
