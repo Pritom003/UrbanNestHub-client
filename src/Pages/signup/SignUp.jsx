@@ -47,7 +47,7 @@ console.log(role,image,name,email,password);
               const User={
                 email:email,
                 name:name,
-                role:role,
+                requesterole:role,
                 image:image,
 
               }
@@ -107,7 +107,7 @@ console.log(role,image,name,email,password);
         const user = {
           email: res.user.email,
           name: res.user.displayName,
-          role: role,
+          requesterole: role,
           image: res.user.photoURL,
         };
         console.log(user, 'User');
@@ -166,7 +166,7 @@ console.log(role,image,name,email,password);
 
           <div className="form-control">
           <label className="label">
-            <span className="label-text">Role</span>
+            <span className="label-text">Requested Role</span>
           </label>
           <select
             name="role"
@@ -220,7 +220,7 @@ console.log(role,image,name,email,password);
      <form onSubmit={handleGoogle}>
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Role</span>
+          <span className="label-text"> Requested Role</span>
         </label>
         <select
           name="role"

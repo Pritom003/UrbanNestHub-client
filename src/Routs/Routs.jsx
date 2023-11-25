@@ -9,6 +9,9 @@ import Dashboard from './Dashboard';
 import Allusers from '../Pages/Dashboard/Allusers/Allusers';
 import PrivateRoute from './secretrouts/PrivateRout';
 import AdminRoute from './secretrouts/AdminRouts';
+import AdminHome from '../Pages/Dashboard/Allusers/Adminrouts/AdminHome';
+import Manageproperties from '../Pages/Dashboard/Allusers/Adminrouts/Manageproperties';
+import Managereviews from '../Pages/Dashboard/Allusers/Adminrouts/Managereviews';
 
 const router = createBrowserRouter([
   {
@@ -35,8 +38,22 @@ const router = createBrowserRouter([
     children:[
       {
         path:'allusers',
-        // element:<AdminRoute><Allusers></Allusers></AdminRoute>}
-        element:<Allusers></Allusers>}
+        element:<AdminRoute><Allusers></Allusers></AdminRoute>
+      },
+        // element:<Allusers></Allusers>}
+
+        {
+          path:'adminhome',
+          element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
+        {
+          path:'manageproperties',
+          element:<AdminRoute><Manageproperties></Manageproperties></AdminRoute>
+        },
+        {
+          path:'managereviews',
+          element:<AdminRoute><Managereviews></Managereviews></AdminRoute>
+        },
     ]
 
   }

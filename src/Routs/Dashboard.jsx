@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBook, FaFileImport, FaHome, FaList, FaStar, FaUser } from 'react-icons/fa';
+import { FaBook, FaComment, FaFileImport, FaHome, FaList, FaStar, FaUser } from 'react-icons/fa';
 // import { FaCartPlus, FaFileCircleCheck } from "react-icons/fa6";
 import { IoIosContact } from "react-icons/io";
 // import useAuth from "../Hooks/UseAuth";
@@ -37,11 +37,15 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/managecontest">
-                <FaList className="text-xl"></FaList>Manage Contest
+                <NavLink to="/dashboard/manageproperties">
+                <FaList className="text-xl"></FaList>Manage Properties
                 </NavLink>
               </li>
-              
+              <li>
+                <NavLink to="/dashboard/managereviews">
+                <FaComment></FaComment>  Manage Reviews
+                </NavLink>
+              </li>
               
               </>
               

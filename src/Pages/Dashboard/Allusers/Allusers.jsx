@@ -27,32 +27,39 @@ const Allusers = () => {
 
 
 
-  const handleDeleteUser = user => {
+  const handleDeleteUser = (user) => {
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-   .then })((result) => {
-        if (result.isConfirmed) {
-
-            axiosSecure.delete(`/user/${user._id}`)
-                .then(res => {
-                    if (res.data.deletedCount > 0) {
-                        refetch();
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                        });
-                    }
-                })
-        }
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/user/${user._id}`)
+          .then(res => {
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error deleting user:', error);
+            Swal.fire({
+              title: "Error",
+              text: "Failed to delete user.",
+              icon: "error",
+            });
+          });
+      }
     });
-}
+  };
 
 
 const handleMakeAdmin=user=>{
@@ -83,6 +90,20 @@ const handleMakeAgent=user=>{
       }
   })
 }
+// const handleMakeclent=user=>{
+//   axiosSecure.patch(`/user/agent/${user._id}`)
+//   .then(res=>{
+//       console.log(res.data)
+//       if(res.data.modifiedCount>0){
+//           refetch();
+//           Swal.fire({
+//               title:`${user.name} is an agent Now!`,
+              
+//               icon: "success"
+//             });
+//       }
+//   })
+// }
 
 
 
@@ -96,10 +117,11 @@ const handleMakeAgent=user=>{
         <th>#</th>
         <th>Name</th>
         <th>Email</th>
-        <th>role</th>
         <th>make admin</th>
-        <th>make agent</th>
+        <th>Requsted</th>
+        <th>Make agent</th>
         <th>remove user</th>
+        <th>fraud</th>
       </tr>
     </thead>
     <tbody>
@@ -107,7 +129,7 @@ const handleMakeAgent=user=>{
          <td>{index}</td>
         <td>{users.name}</td>
         <td>{users.email}</td>
-        <td>{users.role}</td>
+      
         <td>
 
        {
@@ -115,14 +137,18 @@ const handleMakeAgent=user=>{
         <FaUser></FaUser> {users.role}</button>
        }
         </td>
+        <td>  <FaUser></FaUser> {users.requesterole}</td>
         <td>
 
    {
-    users?.role==='agent'? 'Agent': <button onClick={()=> handleMakeAgent(users)} className="btn border border-blue-900 bg-blue-200 px-6">
-    <FaUser></FaUser> {users.role}</button>
+    users.requesterole==='agent' ?<button onClick={()=> handleMakeAgent(users)} 
+    className="btn border border-blue-900 bg-blue-200 px-6">
+   Make agent</button>:'client'
    }
 </td>
         <td> <button onClick={()=>handleDeleteUser(users)} className='text-red-800'><FaTrash></FaTrash></button></td>
+      
+      <td>fraud</td>
       </tr>)}
       
      
