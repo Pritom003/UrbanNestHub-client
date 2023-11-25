@@ -16,7 +16,9 @@ const {logout,user}=useAuth()
         <li><Link to="/">Home</Link></li>
         <li><Link to="/login">login</Link></li>
         <li><Link to="/regi">signup</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+     {
+      user?    <li><Link to="/dashboard">Dashboard</Link></li>:''
+     }
         {
             user ? <>
                 {/* <span>{user?.displayName}</span> */}

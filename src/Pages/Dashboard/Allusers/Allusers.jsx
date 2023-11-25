@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import useAxios from '../../../Hooks/UseAxios';
-import { FaRemoveFormat, FaTrash, FaUser } from 'react-icons/fa';
+// import useAxios from '../../../Hooks/UseAxios';
+import { FaTrash, FaUser } from 'react-icons/fa';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure';
 import Swal from 'sweetalert2';
 
 const Allusers = () => {
-  const axiosPublic = useAxios();
+  // const axiosPublic = useAxios();
   const axiosSecure=useAxiosSecure()
   const { data: users = [],refetch } = useQuery({
     queryKey: ['allusers'],
     queryFn: async () => {
       try {
-        const res = await axiosPublic.get('/user');
+        const res = await axiosSecure.get('/user');
         return res.data;
       } catch (error) {
         throw new Error('Failed to fetch user data');
@@ -36,7 +36,7 @@ const Allusers = () => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
+   .then })((result) => {
         if (result.isConfirmed) {
 
             axiosSecure.delete(`/user/${user._id}`)
@@ -55,6 +55,35 @@ const Allusers = () => {
 }
 
 
+const handleMakeAdmin=user=>{
+  axiosSecure.patch(`/user/admin/${user._id}`)
+  .then(res=>{
+      console.log(res.data)
+      if(res.data.modifiedCount>0){
+          refetch();
+          Swal.fire({
+              title:`${user.name} is an admin Now!`,
+              
+              icon: "success"
+            });
+      }
+  })
+}
+const handleMakeAgent=user=>{
+  axiosSecure.patch(`/user/agent/${user._id}`)
+  .then(res=>{
+      console.log(res.data)
+      if(res.data.modifiedCount>0){
+          refetch();
+          Swal.fire({
+              title:`${user.name} is an agent Now!`,
+              
+              icon: "success"
+            });
+      }
+  })
+}
+
 
 
 
@@ -69,6 +98,7 @@ const Allusers = () => {
         <th>Email</th>
         <th>role</th>
         <th>make admin</th>
+        <th>make agent</th>
         <th>remove user</th>
       </tr>
     </thead>
@@ -80,9 +110,18 @@ const Allusers = () => {
         <td>{users.role}</td>
         <td>
 
-        <button  className="btn border border-blue-900 bg-blue-200 px-6">
-         <FaUser></FaUser> user</button>
+       {
+        users?.role==='admin'? "Admin": <button onClick={()=> handleMakeAdmin(users)} className="btn border border-blue-900 bg-blue-200 px-6">
+        <FaUser></FaUser> {users.role}</button>
+       }
         </td>
+        <td>
+
+   {
+    users?.role==='agent'? 'Agent': <button onClick={()=> handleMakeAgent(users)} className="btn border border-blue-900 bg-blue-200 px-6">
+    <FaUser></FaUser> {users.role}</button>
+   }
+</td>
         <td> <button onClick={()=>handleDeleteUser(users)} className='text-red-800'><FaTrash></FaTrash></button></td>
       </tr>)}
       

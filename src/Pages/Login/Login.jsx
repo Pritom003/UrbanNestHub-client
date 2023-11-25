@@ -11,7 +11,7 @@ const Login = () => {
   const location=useLocation()
   console.log(location);
   const navigate=useNavigate()
-  const { loginuser,creategooglesignup} = useAuth()
+  const { loginuser} = useAuth()
 
 const axiosPublic=useAxios()
 
@@ -50,32 +50,6 @@ const axiosPublic=useAxios()
     //       })})
     // };
 
-
-
-  //   const handleGoogleSignIn = () =>{
-  //     creategooglesignup()
-  //     .then(result =>{
-  //         console.log(result.user);
-  //         const userInfo = {
-  //             email: result.user?.email,
-  //             name: result.user?.displayName
-  //         }
-  //         axiosPublic.post('/user', userInfo)
-  //         .then(res =>{
-  //             console.log(res.data);
-  //             if(res.data.insertedId){
-  //                  Swal.fire({
-  //                 position: 'top-end',
-  //                 icon: 'success',
-  //                 title: 'Your registration was successful!',
-  //                 showConfirmButton: false,
-  //                 timer: 1500,
-  //               });
-  //             }
-  //             navigate('/');
-  //         })
-  //     })
-  // }
 
 
 
