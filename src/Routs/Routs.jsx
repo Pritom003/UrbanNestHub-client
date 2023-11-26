@@ -12,6 +12,7 @@ import AdminRoute from './secretrouts/AdminRouts';
 import AdminHome from '../Pages/Dashboard/Allusers/Adminrouts/AdminHome';
 import Manageproperties from '../Pages/Dashboard/Allusers/Adminrouts/Manageproperties';
 import Managereviews from '../Pages/Dashboard/Allusers/Adminrouts/Managereviews';
+import AddProperties from '../Pages/Dashboard/Agent/Addproperties/AddProperties';
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
           path:'managereviews',
           element:<AdminRoute><Managereviews></Managereviews></AdminRoute>
         },
+        // agent routs
+        {
+          path:'addproperties',
+          element:<AddProperties></AddProperties>
+        }
     ]
 
   }

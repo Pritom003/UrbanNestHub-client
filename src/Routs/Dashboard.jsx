@@ -50,7 +50,10 @@ const Dashboard = () => {
               </>
               
               
-              : isagent? <><li><NavLink to='/dashboard/addcontest'><FaFileImport className="text-xl"></FaFileImport> Add Contest</NavLink></li>
+              : isagent? <><li><NavLink 
+              to='/dashboard/addproperties'><FaFileImport
+               className="text-xl"></FaFileImport> Add properties
+               </NavLink></li>
               <li><NavLink to='/dashboard/createdcontest'><FaList className="text-xl"></FaList> My Created Contest</NavLink></li>
             
                   <li><NavLink to='/dashboard/winningcontest'>
