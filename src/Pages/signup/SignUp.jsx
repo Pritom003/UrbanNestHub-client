@@ -22,7 +22,7 @@ const navigate = useNavigate();
     const image = form.image.value;
     const name = form.name.value;
     const role = form.role.value;
-    const email = form.email.value;
+    const email = form.email.value.toLowerCase(); 
     const password = form.password.value;
 console.log(role,image,name,email,password);
     if (!/^.{6,}$/.test(password)) {
@@ -105,7 +105,7 @@ console.log(role,image,name,email,password);
     creategooglesignup()
       .then((res) => {
         const user = {
-          email: res.user.email,
+          email: res.user.email.toLowerCase(),
           name: res.user.displayName,
           requesterole: role,
           image: res.user.photoURL,
