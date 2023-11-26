@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAuth from "../../../../Hooks/UseAuth";
 import useAxios from "../../../../Hooks/UseAxios";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -29,14 +30,34 @@ if (res.data.success) {
   const propertyData = {
     title: data.title,
     location: data.location,
+    descrption: data.description,
     agentName: user?.displayName,
     agentEmail: user?.email,
+    agentImage:user?.photoURL,
     time: data.time,
     priceRangeMin: data.priceRangeMin,
     priceRangeMax: data.priceRangeMax,
     imageUrl: res.data.data.display_url,
+    status:'pending'
   };
   console.log(propertyData);
+  const properties=await axiosPublic.post('/properties',propertyData)
+
+  if(properties.data.insertedId){
+    // show success popup
+    // reset();
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `${data.title} is added to the properties.`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
+
+
+
+
 }
 
 
@@ -90,6 +111,20 @@ if (res.data.success) {
           </div>
           <div className="mb-4 sm:mb-0">
             <label className="block text-sm font-medium text-purple-700">
+              property details
+            </label>
+
+            <textarea  {...register("description", { required: true })}
+              className="mt-1 p-2 rounded-lg border border-gray-300 focus:ring focus:ring-indigo-200 focus:outline-none w-full"
+            
+          name="description"
+          
+        ></textarea>
+            
+             
+          </div>
+          <div className="mb-4 sm:mb-0">
+            <label className="block text-sm font-medium text-purple-700">
               Agent name
             </label>
             <input
@@ -100,6 +135,7 @@ if (res.data.success) {
               className="mt-1 p-2 rounded-lg border border-gray-300 focus:ring focus:ring-indigo-200 focus:outline-none w-full"
             />
           </div>
+          
           <div className="mb-4 sm:mb-0">
             <label className="block text-sm font-medium text-purple-700">
               Agent email
