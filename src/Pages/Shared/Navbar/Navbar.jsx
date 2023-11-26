@@ -17,8 +17,22 @@ const {logout,user}=useAuth()
         <li><Link to="/login">login</Link></li>
         <li><Link to="/regi">signup</Link></li>
      {
-      user?    <li><Link to="/dashboard">Dashboard</Link></li>:''
+      user?    <li><Link to="/dashboard">Dashboard</Link></li>
+                  
+      
+      
+      :''
      }
+
+{
+      user?    <li><Link to="/allproperties">All Properties</Link></li>
+                  
+      
+      
+      :''
+     }
+
+
         {
             user ? <>
                 {/* <span>{user?.displayName}</span> */}

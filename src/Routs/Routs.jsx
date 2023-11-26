@@ -21,8 +21,12 @@ import Boughtproperty from '../Pages/Dashboard/User/Boughtproperty/Boughtpropert
 import Myreviews from '../Pages/Dashboard/User/Myreviews/Myreviews';
 import Mysoldproperties from '../Pages/Dashboard/Agent/Mysoldproperties/Mysoldproperties';
 import RequestedProperties from '../Pages/Dashboard/Agent/Requested/RequestedProperties';
+import Allproperites from '../Pages/Allproperties/Allproperites';
+import PropertiesDetails from '../Pages/Details/PropertiesDetails';
+
 
 const router = createBrowserRouter([
+  
   {
     path: '/',
     element: <Main></Main>,
@@ -38,6 +42,17 @@ const router = createBrowserRouter([
       {
         path: '/regi',
         element: <SignUp></SignUp>,
+      },
+      {
+        path: '/allproperties',
+        element: <Allproperites></Allproperites>,
+      },
+
+      {
+        path: '/properties/:_id',
+        element: <PropertiesDetails></PropertiesDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/properties/${params._id}`)    
+        
       },
     ],
   },
