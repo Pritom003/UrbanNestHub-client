@@ -46,6 +46,8 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/wishlist'> <FaMagic></FaMagic> Wishlist </NavLink></li>
                                 <li><NavLink to='/dashboard/myreviews'><FaComment></FaComment> my reviews</NavLink></li>
                                 <li><NavLink to='/dashboard/boughtitem'><FaMoneyBill></FaMoneyBill> bought properties</NavLink></li>
+                          
+                                
                             </>
                         }
                     </>

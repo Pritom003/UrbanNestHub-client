@@ -24,6 +24,7 @@ import RequestedProperties from '../Pages/Dashboard/Agent/Requested/RequestedPro
 import Allproperites from '../Pages/Allproperties/Allproperites';
 import PropertiesDetails from '../Pages/Details/PropertiesDetails';
 import AgentRoute from './secretrouts/AgentRouts';
+import MaKeOffer from '../Pages/Dashboard/User/MakeOffer/MaKeOffer';
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/properties/${params._id}`)    
         
       },
+     
     ],
   },
   {
@@ -111,7 +113,9 @@ const router = createBrowserRouter([
         },
         {
           path:'wishlist',
-          element:<Wishlist></Wishlist>
+          element:<PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
+          // loader: () => fetch('http://localhost:5000/wished') 
+         
         },
         {
           path:'boughtitem',
@@ -120,8 +124,13 @@ const router = createBrowserRouter([
         {
           path:'myreviews',
           element:<Myreviews></Myreviews>
+        },
+      
+        {
+          path: 'wishlist/makeoffer/:id',
+          element: <PrivateRoute><MaKeOffer /></PrivateRoute>,
+          loader: ({ params }) => fetch(`http://localhost:5000/wished/makeoffer/${params.id}`)
         }
-
 
 
     ]
