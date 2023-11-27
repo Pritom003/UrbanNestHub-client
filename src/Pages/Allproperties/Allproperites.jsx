@@ -9,13 +9,18 @@ const Allproperites = () => {
   const { user } = useAuth();
   // const axiossecure = useAxiosSecurpe();
 const axiospublic=useAxios()
-  const { data: verifieddata = [], isLoading, refetch } = useQuery({
-    queryKey: ["verifieddata"],
-    queryFn: async () => {
+const { data: verifieddata = [], isLoading, refetch } = useQuery({
+  queryKey: ["verifieddata"],
+  queryFn: async () => {
+    try {
       const res = await axiospublic.get(`/properties`);
       return res.data;
-    },
-  });
+    } catch (error) {
+      console.error('Error fetching properties:', error);
+      throw error;
+    }
+  },
+})
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">

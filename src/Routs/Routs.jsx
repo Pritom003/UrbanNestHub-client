@@ -23,6 +23,7 @@ import Mysoldproperties from '../Pages/Dashboard/Agent/Mysoldproperties/Mysoldpr
 import RequestedProperties from '../Pages/Dashboard/Agent/Requested/RequestedProperties';
 import Allproperites from '../Pages/Allproperties/Allproperites';
 import PropertiesDetails from '../Pages/Details/PropertiesDetails';
+import AgentRoute from './secretrouts/AgentRouts';
 
 
 const router = createBrowserRouter([
@@ -45,12 +46,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/allproperties',
-        element: <Allproperites></Allproperites>,
+        element:<PrivateRoute> <Allproperites></Allproperites></PrivateRoute>,
       },
 
       {
         path: '/properties/:_id',
-        element: <PropertiesDetails></PropertiesDetails>,
+        element: <PrivateRoute><PropertiesDetails></PropertiesDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/properties/${params._id}`)    
         
       },
@@ -85,15 +86,15 @@ const router = createBrowserRouter([
         },
         {
           path:'agentpropertyupdate',
-          element:<AddProperties></AddProperties>
+          element:<AgentRoute><AddProperties></AddProperties></AgentRoute>
         },
         {
           path:'agenthome',
-          element:<AgentHome></AgentHome>
+          element:<AgentRoute><AgentHome></AgentHome></AgentRoute>
         },
         {
           path:'addedproperties',
-          element:<AgentProperties></AgentProperties>
+          element:<AgentRoute><AgentProperties></AgentProperties></AgentRoute>
         },
         {
           path:'soldproperties',
