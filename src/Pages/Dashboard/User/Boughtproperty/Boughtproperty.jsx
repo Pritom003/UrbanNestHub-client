@@ -2,6 +2,7 @@ import React from 'react';
 import useAuth from '../../../../Hooks/UseAuth';
 import useAxiosSecure from '../../../../Hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const BoughtProperty = () => {
   const { user } = useAuth();
@@ -31,9 +32,9 @@ console.log(myBought,'proimg');
               <p>Offered Amount: ${data.offeredAmount}</p>
               <p>Status: {data.request}</p>
               {data.request === 'accepted' && (
-                <button className="btn btn-primary" onClick={() => handlePay(data)}>
-                  Pay
-                </button>
+               <Link to={`payment/${data._id}`}> <button className="btn btn-primary" >
+               Pay
+             </button></Link>
               )}
               {data.request === 'bought' && (
                 <p>Transaction ID: {data.transactionId}</p>

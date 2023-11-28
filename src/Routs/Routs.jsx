@@ -25,6 +25,7 @@ import Allproperites from '../Pages/Allproperties/Allproperites';
 import PropertiesDetails from '../Pages/Details/PropertiesDetails';
 import AgentRoute from './secretrouts/AgentRouts';
 import MaKeOffer from '../Pages/Dashboard/User/MakeOffer/MaKeOffer';
+import Payment from '../Pages/Dashboard/User/Boughtproperty/Payment';
 
 
 const router = createBrowserRouter([
@@ -130,6 +131,11 @@ const router = createBrowserRouter([
           path: 'wishlist/makeoffer/:id',
           element: <PrivateRoute><MaKeOffer /></PrivateRoute>,
           loader: ({ params }) => fetch(`http://localhost:5000/wished/makeoffer/${params.id}`)
+        },
+        {
+          path: 'boughtitem/payment/:id',
+          element: <Payment></Payment>,
+          loader: ({ params }) => fetch(`http://localhost:5000/offers/payment/${params.id}`)
         }
 
 

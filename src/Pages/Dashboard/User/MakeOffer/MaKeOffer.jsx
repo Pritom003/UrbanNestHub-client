@@ -8,6 +8,7 @@ const MaKeOffer = () => {
   const { register, handleSubmit,  watch } = useForm();
   const axiossecure=useAxiosSecure()
   const {
+    agentemail,
     propertyId,
     proimage,
     wishedtitle,
@@ -33,7 +34,9 @@ const MaKeOffer = () => {
         buyerEmail: data.buyerEmail,
         buyerName: data.buyerName,
         buyingDate: data.buyingDate,
-        request: 'pending'
+        request: 'pending',
+        agentEmail: data.agentEmail,   
+        propertyId: data.propertyId 
       };
   
       console.log('Offer data:', offerdata);
@@ -159,6 +162,30 @@ const MaKeOffer = () => {
               value={wisheremail}
               readOnly
               {...register('buyerEmail')}
+            />
+          </div>
+          <div className="mb-4 sm:mb-0">
+            <label className="block text-sm font-medium text-blue-800">
+              Agent Email:
+            </label>
+            <input
+              className='w-56 h-10 rounded-lg text-center text-black'
+              type="text"
+              value={agentemail}
+              readOnly
+              {...register('agentEmail')}
+            />
+          </div>
+          <div className="mb-4 sm:mb-0">
+            <label className="block text-sm font-medium text-blue-800">
+              Property ID:
+            </label>
+            <input
+              className='w-56 h-10 rounded-lg text-center text-black'
+              type="text"
+              value={propertyId}
+              readOnly
+              {...register('propertyId')}
             />
           </div>
 
