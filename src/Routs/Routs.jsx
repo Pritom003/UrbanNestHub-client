@@ -26,6 +26,8 @@ import PropertiesDetails from '../Pages/Details/PropertiesDetails';
 import AgentRoute from './secretrouts/AgentRouts';
 import MaKeOffer from '../Pages/Dashboard/User/MakeOffer/MaKeOffer';
 import Payment from '../Pages/Dashboard/User/Boughtproperty/Payment';
+import Selectadv from '../Pages/Dashboard/Allusers/Adminrouts/Selectadv';
+// import Advertisement from '../Pages/Home/Advertisement/Advertisement';
 
 
 const router = createBrowserRouter([
@@ -64,12 +66,16 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
+      // admin routs
       {
         path:'allusers',
         element:<AdminRoute><Allusers></Allusers></AdminRoute>
       },
         // element:<Allusers></Allusers>}
-
+        {
+          path:'selectadv',
+          element:<AdminRoute><Selectadv></Selectadv></AdminRoute>
+        },
         {
           path:'adminhome',
           element:<AdminRoute><AdminHome></AdminHome></AdminRoute>

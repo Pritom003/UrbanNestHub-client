@@ -29,6 +29,13 @@ const Dashboard = () => {
                                     <FaList className="text-xl"></FaList>Manage Properties
                                 </NavLink>
                             </li>
+
+                            <li>
+                                <NavLink to="/dashboard/selectadv">
+                                    <FaStar></FaStar>  Advertisement
+                                </NavLink>
+                            </li>
+
                             <li>
                                 <NavLink to="/dashboard/managereviews">
                                     <FaComment></FaComment> Manage Reviews
