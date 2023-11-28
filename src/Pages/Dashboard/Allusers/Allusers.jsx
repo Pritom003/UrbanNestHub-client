@@ -90,22 +90,32 @@ const handleMakeAgent=user=>{
       }
   })
 }
-// const handleMakeclent=user=>{
-//   axiosSecure.patch(`/user/agent/${user._id}`)
-//   .then(res=>{
-//       console.log(res.data)
-//       if(res.data.modifiedCount>0){
-//           refetch();
-//           Swal.fire({
-//               title:`${user.name} is an agent Now!`,
-              
-//               icon: "success"
-//             });
-//       }
-//   })
-// }
 
+const handlefraud = async (user) => {
+  const fraudagentEmail = user.email;
 
+  try {
+    const response = await axiosSecure.patch(`/user/fraud/${user._id}`, { agentEmail: fraudagentEmail });
+
+    console.log(response.data);
+
+    if (response.data.modifiedCount > 0) {
+      refetch();
+      Swal.fire({
+        title: `${user.name} is marked as fraud!`,
+        icon: "success"
+      });
+    }
+  } catch (error) {
+    console.error('Error marking as fraud:', error.message);
+    Swal.fire({
+      title: "Error",
+      text: `${error.message}`,
+      icon: "error",
+    });
+  
+  }
+};
 
 
   return (
@@ -148,7 +158,13 @@ const handleMakeAgent=user=>{
 </td>
         <td> <button onClick={()=>handleDeleteUser(users)} className='text-red-800'><FaTrash></FaTrash></button></td>
       
-      <td>fraud</td>
+      <td>{
+
+users?.role==='agent'?<button onClick={()=>handlefraud(users)} className='btn btn-ghost bg-red-900'>fraud</button>:<button  disabled className='text-gray-400'> fraud </button>
+
+
+
+        } </td>
       </tr>)}
       
      

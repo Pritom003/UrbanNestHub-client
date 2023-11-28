@@ -60,7 +60,9 @@ const RequestedProperties = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4 justify-center mx-auto">
-      {requestedData.map((offer) => (
+      {requestedData
+      .filter((data) => data.agentEmail === user.email || data.agentName===user.displayName)
+      .map((offer) => (
         <div key={offer._id} className="card w-96 bg-base-100 shadow-xl">
           <div className="card-body">
             <h2 className="card-title">{offer.propertyTitle}</h2>
