@@ -4,6 +4,7 @@ import Footer from '../Shared/Footer';
 import Banner from './Banner';
 import Advertisement from './Advertisement/Advertisement';
 import UserReview from './Latestreview/UserReview';
+import About from './About';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         <Banner></Banner>
         <Advertisement></Advertisement>
         <UserReview></UserReview>
+        <About></About>
       </div>
       <Footer></Footer>
     </div>

@@ -12,7 +12,7 @@ const Allproperites = () => {
   // const axiossecure = useAxiosSecurpe();
   const axiospublic = useAxios();
   const { data: verifieddata = [], isLoading, refetch } = useQuery({
-    queryKey: ['verifieddata'],
+    queryKey: ['verrrifieddata'],
     queryFn: async () => {
       try {
         const res = await axiospublic.get(`/properties`);

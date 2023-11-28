@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       {
         path: '/properties/:_id',
         element: <PrivateRoute><PropertiesDetails></PropertiesDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/properties/${params._id}`)    
+        loader: ({params}) => fetch(`https://urban-nest-hub-server-site.vercel.app/properties/${params._id}`)    
         
       },
      
@@ -120,8 +120,8 @@ const router = createBrowserRouter([
         },
         {
           path:'wishlist',
-          element:<PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
-          // loader: () => fetch('http://localhost:5000/wished') 
+          element:<Wishlist></Wishlist>
+          // loader: () => fetch('https://urban-nest-hub-server-site.vercel.app/wished') 
          
         },
         {
@@ -136,12 +136,12 @@ const router = createBrowserRouter([
         {
           path: 'wishlist/makeoffer/:id',
           element: <PrivateRoute><MaKeOffer /></PrivateRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/wished/makeoffer/${params.id}`)
+          loader: ({ params }) => fetch(`https://urban-nest-hub-server-site.vercel.app/wished/makeoffer/${params.id}`)
         },
         {
           path: 'boughtitem/payment/:id',
           element: <Payment></Payment>,
-          loader: ({ params }) => fetch(`http://localhost:5000/offers/payment/${params.id}`)
+          loader: ({ params }) => fetch(`https://urban-nest-hub-server-site.vercel.app/offers/payment/${params.id}`)
         }
 
 
