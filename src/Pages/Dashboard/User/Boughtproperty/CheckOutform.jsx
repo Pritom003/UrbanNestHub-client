@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../../Hooks/UseAxiosSecure';
 import useAuth from '../../../../Hooks/UseAuth';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const CheckOutform = ({price,soldprptitle, propertyLocation,agentName,agentEmail,propertyId,pMntId}) => {
   const elements =useElements()
@@ -11,6 +12,7 @@ const CheckOutform = ({price,soldprptitle, propertyLocation,agentName,agentEmail
   const [clientSecret, setClientSecret] = useState('')
   const [transactionId, setTransactionId] = useState('');
   const stripe=useStripe()
+  const navegate=useNavigate()
 const axiossecure=useAxiosSecure()
 
   useEffect( () => {
@@ -95,14 +97,15 @@ const payment={
  const res=await axiossecure.post('/payments',payment)
  console.log('saved pament',res.data);
 //  refetch();
- if (res.data?.paymentResult?.insertedId) {
+ if (res.data.acknowledged) {
      Swal.fire({
          position: "top-end",
          icon: "success",
-         title: "Thank you for the taka paisa",
+         title: "Thank you for the taka payment",
          showConfirmButton: false,
          timer: 1500
      });}
+     navegate('/')
 
 
 

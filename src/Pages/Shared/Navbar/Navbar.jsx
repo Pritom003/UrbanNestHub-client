@@ -14,8 +14,8 @@ const {logout,user}=useAuth()
 
   const NavLinks = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/login">login</Link></li>
-        <li><Link to="/regi">signup</Link></li>
+        {/* <li><Link to="/login">login</Link></li>
+        <li><Link to="/regi">signup</Link></li> */}
      {
       user?    <li><Link to="/dashboard">Dashboard</Link></li>
                   

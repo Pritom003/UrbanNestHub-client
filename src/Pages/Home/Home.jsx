@@ -5,6 +5,7 @@ import Banner from './Banner';
 import Advertisement from './Advertisement/Advertisement';
 import UserReview from './Latestreview/UserReview';
 import About from './About';
+import Connectus from './ConnetctUs.jsx/Connectus';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <Advertisement></Advertisement>
         <UserReview></UserReview>
         <About></About>
+        <Connectus></Connectus>
       </div>
       <Footer></Footer>
     </div>

@@ -3,6 +3,7 @@ import useAuth from "../../../../Hooks/UseAuth";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const AgentProperties = () => {
@@ -105,7 +106,7 @@ const AgentProperties = () => {
 
     <div className="card-actions justify-end">
     
-      <button  className="btn bg-blue-950 text-white">Update Now</button>
+  <Link to={`update/${data._id}`}><button  className="btn bg-blue-950 text-white">Update Now</button></Link>
   
       <button onClick={()=>handleDeleteUser(data._id)} className="btn text-red-600"><FaTrash></FaTrash></button>
     </div>

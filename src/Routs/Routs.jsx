@@ -27,6 +27,8 @@ import AgentRoute from './secretrouts/AgentRouts';
 import MaKeOffer from '../Pages/Dashboard/User/MakeOffer/MaKeOffer';
 import Payment from '../Pages/Dashboard/User/Boughtproperty/Payment';
 import Selectadv from '../Pages/Dashboard/Allusers/Adminrouts/Selectadv';
+import Errorpage from '../Pages/ERROR';
+import Updatepropety from '../Pages/Dashboard/Agent/Updateproperties/Updatepropety';
 // import Advertisement from '../Pages/Home/Advertisement/Advertisement';
 
 
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Main></Main>,
+    errorElement:<Errorpage></Errorpage>,
     children: [
       {
         path: '/',
@@ -65,6 +68,7 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+
     children:[
       // admin routs
       {
@@ -106,6 +110,12 @@ const router = createBrowserRouter([
           element:<AgentRoute><AgentProperties></AgentProperties></AgentRoute>
         },
         {
+          path:'addedproperties/update/:_id',
+          element:<AgentRoute> <Updatepropety></Updatepropety> </AgentRoute>,
+          loader: ({params}) => fetch(`https://urban-nest-hub-server-site.vercel.app/properties/${params._id}`) 
+
+        },
+        {
           path:'soldproperties',
           element:<Mysoldproperties></Mysoldproperties>
         },
@@ -121,7 +131,7 @@ const router = createBrowserRouter([
         {
           path:'wishlist',
           element:<Wishlist></Wishlist>
-          // loader: () => fetch('https://urban-nest-hub-server-site.vercel.app/wished') 
+          // loader: () => fetch('http://localhost:5000/wished') 
          
         },
         {

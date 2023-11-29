@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FaTrash, FaUser } from 'react-icons/fa';
 import useAxiosSecure from '../../../Hooks/UseAxiosSecure';
 import Swal from 'sweetalert2';
+import AllUsersMaterialTable from './AllUsersTable';
 
 const Allusers = () => {
   // const axiosPublic = useAxios();
@@ -119,59 +120,16 @@ const handlefraud = async (user) => {
 
 
   return (
-<div className="overflow-x-auto bg-slate-200">
-  <table className="table">
-    {/* head */}
-    <thead>
-    <tr className='bg-gradient-to-r from-blue-500 to-blue-950 text-white'>
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>make admin</th>
-        <th>Requsted</th>
-        <th>Make agent</th>
-        <th>remove user</th>
-        <th>fraud</th>
-      </tr>
-    </thead>
-    <tbody>
-      {users?.map((users,index)=> <tr key={index}>
-         <td>{index}</td>
-        <td>{users.name}</td>
-        <td>{users.email}</td>
-      
-        <td>
-
-       {
-        users?.role==='admin'? "Admin": <button onClick={()=> handleMakeAdmin(users)} className="btn border border-blue-900 bg-blue-200 px-6">
-        <FaUser></FaUser> {users.role}</button>
-       }
-        </td>
-        <td>  <FaUser></FaUser> {users.requesterole}</td>
-        <td>
-
-   {
-    users.requesterole==='agent' ?<button onClick={()=> handleMakeAgent(users)} 
-    className="btn border border-blue-900 bg-blue-200 px-6">
-   Make agent</button>:'client'
-   }
-</td>
-        <td> <button onClick={()=>handleDeleteUser(users)} className='text-red-800'><FaTrash></FaTrash></button></td>
-      
-      <td>{
-
-users?.role==='agent'?<button onClick={()=>handlefraud(users)} className='btn btn-ghost bg-red-900'>fraud</button>:<button  disabled className='text-gray-400'> fraud </button>
-
-
-
-        } </td>
-      </tr>)}
-      
-     
-     
-    </tbody>
-  </table>
-</div>
+    <div className="overflow-x-auto bg-slate-200">
+    {/* ... (other JSX) */}
+    <AllUsersMaterialTable
+      users={users}
+      handleDeleteUser={handleDeleteUser}
+      handleMakeAdmin={handleMakeAdmin}
+      handleMakeAgent={handleMakeAgent}
+      handleFraud={handlefraud}
+    />
+  </div>
 
 
   )

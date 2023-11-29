@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from '../../assets/icons8-google.svg';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -7,7 +7,7 @@ import useAuth from '../../Hooks/UseAuth';
 import useAxios from '../../Hooks/UseAxios';
 import Swal from 'sweetalert2';
 const Login = () => {
-
+  const [passworderr, setpassworderr] = useState('');
   const location=useLocation()
   console.log(location);
   const navigate=useNavigate()
@@ -26,6 +26,7 @@ const axiosPublic=useAxios()
     // const info = { email, password };
     loginuser(email, password)
     .then((res) => {
+      setpassworderr('')
       console.log(res.user);
       const user={email}
       console.log(user);
@@ -36,23 +37,8 @@ const axiosPublic=useAxios()
   })
     .catch((error) => {
       console.error(error);
+      setpassworderr(error.message)
     })}
-    // const handlegooglepop = () => {
-    //   creategooglesignup()
-    //     .then((res) => {
-    //       console.log('user', res.user);
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //       Swal.fire({
-    //         icon: 'error',
-    //         text: 'Email and password do not match, please try again!',
-    //       })})
-    // };
-
-
-
-
 
 
 
@@ -82,9 +68,9 @@ const axiosPublic=useAxios()
               </label>
               <input type="password" name='password' 
               placeholder="password" className="input  w-96 input-bordered" required />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-              </label>
+              {
+                passworderr?<p className='text-red-800'>{passworderr}</p>:''
+              }
             </div>
             <div className="form-control mt-6">
             <button className="btn bg-[#265073]
