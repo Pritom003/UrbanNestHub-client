@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Hooks/UseAuth";
 import useAxiosSecure from "../../../../Hooks/UseAxiosSecure";
+import { Avatar, Card } from "keep-react";
+import { FaFacebook } from "react-icons/fa";
+import SecondHome from "../../../../Routs/SecondHome";
 
 const AdminHome = () => {
   const { user } = useAuth();
@@ -23,16 +26,32 @@ const AdminHome = () => {
         {isLoading ? (
           <p>Loading...</p>
         ) : realRole ? (
-          <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
-              <img src={user.photoURL} className="max-w-sm rounded-lg shadow-2xl" />
-              <div>
-                <h1 className="text-2xl font-bold">Name: {user.displayName}</h1>
-                <p className="py-6">Role: {realRole.role}.</p>
-                <p className="py-6">Email: {realRole.email}.</p>
-              </div>
-            </div>
-          </div>
+          
+         <div>
+     
+           <Card  className="max-w-full p-6">
+         <Card.Container className="flex items-center justify-center">
+           <Avatar
+             shape="circle"
+             img={user.photoURL}
+             statusPosition="bottom-right"
+             size="2xl"
+           />
+         </Card.Container>
+         <Card.Container className="text-center">
+           <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">
+           {user.displayName}
+           </Card.Title>
+           <Card.Title className="!text-body-6 font-normal text-metal-400 
+           md:text-body-5">Role: {realRole.role} <br /> Email: {realRole.email}. </Card.Title>
+         </Card.Container>
+         <Card.Container className="circled mx-auto flex max-w-[220px]
+          items-center justify-center divide-x divide-metal-200 rounded-md 
+          border border-metal-200 p-1 md:p-2">
+          
+         
+         </Card.Container>
+       </Card> </div>
         ) : (
           <p>User not found or not an admin.</p>
         )}

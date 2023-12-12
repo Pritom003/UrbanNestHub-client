@@ -130,7 +130,7 @@ console.log(reviewsData);
               Time
             </label>
             <input
-              type="time"
+              type="date"
               name="time"
               {...register("time", { required: true })}
               className="mt-1 p-2 rounded-lg border border-gray-300 focus:ring focus:ring-indigo-200 focus:outline-none w-full"

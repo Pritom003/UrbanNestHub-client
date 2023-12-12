@@ -3,13 +3,15 @@ import { FaBitbucket, FaBook, FaBuysellads, FaCartArrowDown, FaComment, FaFileIm
 import { IoIosContact } from "react-icons/io";
 import useAdmin from "../Hooks/UseAdmin";
 import useAgent from "../Hooks/UseAgent";
+import SecondHome from "./SecondHome";
+import image from '../assets/bg.jpeg'
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [isAgent] = useAgent();
 
     return (
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row bg-hero-pattern">
             <div className="lg:min-h-screen w-full lg:w-1/5 shadow-lg rounded-lg text-white bg-[#265073]">
                 <ul className="menu p-4">
                     <>
@@ -67,7 +69,10 @@ const Dashboard = () => {
                 </ul>
             </div>
             <div className="flex-1 p-8">
-                <Outlet></Outlet>
+         
+                <Outlet>
+             
+                </Outlet>
             </div>
         </div>
     );
