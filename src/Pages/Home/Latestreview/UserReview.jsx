@@ -20,7 +20,10 @@ const UserReview = () => {
 
   return (
     <div>
-      <h2 className='font-bold text-center'>Latest Reviews</h2>
+  <div className="text-center mt-20  mb-5">
+      <h5 className="text-[#93b4ce] text-xl font-medium">What Our Clients Say</h5>
+      <h1 className="text-4xl font-semibold">Latest Reviews</h1>
+    </div>
       <div className='flex justify-center align-middle bg-green-50 p-10'>
         {latestReviews.map((review) => (
           <Card key={review._id} className="max-w-xs p-6 md:max-w-lg">

@@ -6,7 +6,7 @@ import moduleName from '../../assets/banner.3.jpg';
 const Banner = () => {
   const {user}=useAuth()
   return (
-    <div className="hero min-h-[30vh] mb-10">
+    <div className="hero min-h-[30vh] bg-transparent bg-[#d9dfe4] shadow-lg mb-10">
     <div className="hero-content justify-between md:gap-36 flex-col lg:flex-row-reverse">
      
      

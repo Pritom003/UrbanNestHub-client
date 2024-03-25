@@ -1,11 +1,14 @@
-import React from 'react';
+
 import useAxios from '../../../Hooks/UseAxios';
 import { useQuery } from '@tanstack/react-query';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/css';
 import { Link } from 'react-router-dom';
 // import './styles.css';
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+// import { Component } from "react";
+import Slider from "react-slick";
 const Advertisement = () => {
   const axiosPublic = useAxios();
   const { data: advertised = [], isLoading, refetch } = useQuery({
@@ -20,18 +23,28 @@ const Advertisement = () => {
       }
     },
   });
+  console.log(advertised);
+  var settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true
+  };
 
   return (
-  <div className='bg-blue-50 p-10'>
-    <h1 className='text-3xl font-bold text-blue-900 text-center p-4 underline'> Featured Properties </h1>
-     <Swiper
-      slidesPerView={4}
-      spaceBetween={30}
-      centeredSlides={true}
-      className="mySwiper "
-    >
-      {advertised.map((property) => (
-        <SwiperSlide key={property._id}>
+
+<div > 
+<div className="text-center mt-5  mb-5">
+    <h5 className="text-[#93b4ce] text-xl font-medium">Explore Our Featured Properties</h5>
+    <h1 className="text-4xl font-semibold">Discover Your Dream Home</h1>
+  </div>
+  <div className="slider-container">
+<Slider {...settings}>
+{advertised.map((property) => (
+        <div key={property._id}>
           {/* Your content for each slide */}
           <div>
             <img className='h-36 w-30' src={property.propertyImage
@@ -42,10 +55,11 @@ const Advertisement = () => {
             <Link to={`/properties/${property.propertyId}`}> <button className='btn btn-link'> View details</button></Link>
             {/* Add more details or customize as needed */}
           </div>
-        </SwiperSlide>
+        </div>
       ))}
-    </Swiper>
-  </div>
+</Slider>
+</div>
+</div>
   );
 };
 
