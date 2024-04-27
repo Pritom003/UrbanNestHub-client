@@ -19,12 +19,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 
 
-     <div className='max-w-screen-xl mx-auto'>
+
 
      <QueryClientProvider client={queryClient}>
-     <AuthiProvider>   <RouterProvider router={router} /></AuthiProvider>
-    </QueryClientProvider>
+ 
+
+     <div> 
+     <AuthiProvider>     <RouterProvider router={router} /> </AuthiProvider>
+     </div>  </QueryClientProvider>
     
-     </div>
+
   </React.StrictMode>,
 )

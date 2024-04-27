@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
 import Footer from '../Shared/Footer';
 import Banner from './Banner';
@@ -9,16 +8,16 @@ import Connectus from './ConnetctUs.jsx/Connectus';
 
 const Home = () => {
   return (
-    <div>
-      <Navbar></Navbar>
-      <div >
+    <div >
+     
+     <Navbar></Navbar>
         <Banner></Banner>
+        <div className=' max-w-6xl mx-auto'>
         <Advertisement></Advertisement>
         <UserReview></UserReview>
        
-        
-        <About></About>
-        <Connectus></Connectus>
+ <About></About>
+        <Connectus></Connectus> 
       </div>
       <Footer></Footer>
     </div>

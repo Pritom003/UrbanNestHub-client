@@ -60,16 +60,32 @@ const handleAddToWishlist=async()=>{
   return (
     <div>
       <Navbar />
-      <div className="card mt-64 w-full bg-blue-950 text-neutral-content">
-        <div className="card-body items-center text-center">
-          <h2 className="card-title text-3xl font-bold text-blue-600">{title}</h2>
-          <p className="text-lg font-bold"> description {descrption}</p>
-          <p className="text-lg font-bold">Agent name: {agentName}</p>
-          <p className="text-lg font-bold">
-            Price Range: ${priceRangeMin} - ${priceRangeMax}
-          </p>
-          <div className="card-actions justify-end">
-          <button className="btn btn-outline btn-accent" 
+    
+<div>
+  
+  <div className="w-full mx-auto bg-white border border-gray-200 shadow-md rounded-md p-4">
+    <div className="flex justify-between">
+      <div>
+        <h2 className="text-lg uppercase font-semibold text-blue-900 hover:font-bold">
+          {title}
+        </h2>
+        <p className="text-sm text-gray-600">By {agentName}</p>
+      </div>
+      {/* Replace this with your actual image */}
+      <img src={imageUrl} alt="Image" className="bg-blue-500 rounded-full 
+      h-16 w-44" />
+    </div>
+    <p className="text-sm text-gray-700 mt-2">
+      {descrption}
+    </p>
+    <dl className="flex justify-between mt-4">
+      <div className="flex flex-col">
+        <dt className="text-sm font-semibold text-gray-600">Published</dt>
+        <dd className="text-xs text-gray-500">31st June, 2021</dd>
+      </div>
+      <div className="flex flex-col">
+        {/* <dt className="text-sm font-semibold text-gray-600">Reading time</dt> */}
+        <button className="btn btn-outline btn-accent" 
           onClick={()=>handleAddToWishlist(
              descrption,
             title, 
@@ -82,18 +98,16 @@ const handleAddToWishlist=async()=>{
             _id,agentEmail)}>
               Add to Wishlist
             </button>
-         
-          </div>
-        </div>
       </div>
+    </dl>
+  </div>
 
-      <div>
-            <Reviewsection title={title} 
-            
-            prpagentName={agentName}></Reviewsection>
-         
+  <div>
+    <Reviewsection title={title} prpagentName={agentName} />
+  </div>
+</div>
 
-          </div>
+
  
     </div>
   );

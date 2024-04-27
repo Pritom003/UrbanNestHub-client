@@ -98,11 +98,12 @@ console.log(reviewsData);
 
 
 
-  ))}
+  ))}  </div>
 
 
 {/* You can open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>add review</button>
+<div className="flex justify-center " >
+<button className="btn bg-gray-50 text-black w-full " onClick={()=>document.getElementById('my_modal_3').showModal()}>add review</button>
 <dialog id="my_modal_3" className="modal">
   <div className="modal-box bg-slate-400">
     <form method="dialog">
@@ -142,6 +143,7 @@ console.log(reviewsData);
 </div>
   </div>
 </dialog>
+</div>
 
 
 
@@ -155,7 +157,7 @@ console.log(reviewsData);
 
 
 
-      </div>
+    
     </div>
   );
 };

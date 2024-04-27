@@ -38,8 +38,9 @@ const Advertisement = () => {
 
 <div > 
 <div className="text-center mt-5  mb-5">
+<h1 className="text-4xl font-semibold">Discover Your Dream Home</h1>
     <h5 className="text-[#93b4ce] text-xl font-medium">Explore Our Featured Properties</h5>
-    <h1 className="text-4xl font-semibold">Discover Your Dream Home</h1>
+
   </div>
   <div className="slider-container">
 <Slider {...settings}>

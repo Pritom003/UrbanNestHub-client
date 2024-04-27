@@ -5,8 +5,9 @@ const Connectus = () => {
   return (
     <div>
     <div className="text-center mt-5 ">
+    <h1 className="text-4xl font-semibold">Find Answers to Common Queries</h1>
       <h5 className="text-[#93b4ce] text-xl font-medium">FREQUENTLY ASKED QUESTIONS</h5>
-      <h1 className="text-4xl font-semibold">Find Answers to Common Queries</h1>
+ 
     </div>
 
     <div className="lg:flex sm:gap-5 md:gap-10 space-y-5">
