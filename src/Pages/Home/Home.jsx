@@ -12,7 +12,7 @@ const Home = () => {
      
      <Navbar></Navbar>
         <Banner></Banner>
-        <div className=' max-w-6xl mx-auto'>
+        <div className=''>
         <Advertisement></Advertisement>
         <UserReview></UserReview>
        
