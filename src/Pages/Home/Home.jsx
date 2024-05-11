@@ -12,8 +12,9 @@ const Home = () => {
      
      <Navbar></Navbar>
         <Banner></Banner>
-        <div className=''>
         <Advertisement></Advertisement>
+        <div className='xl:max-h-full lg:max-w-[1400px] md:max-w-[700px] max-w-[450px] mx-auto'>
+      
         <UserReview></UserReview>
        
  <About></About>

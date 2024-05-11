@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { FaChessQueen } from 'react-icons/fa';
 
 const Advertisement = () => {
   const axiosPublic = useAxios();
@@ -23,16 +24,16 @@ const Advertisement = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3, // Default slides to show
+    slidesToShow: 1, // Default slides to show
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1500,
     pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1200, // Medium devices and up
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
       {
@@ -54,21 +55,38 @@ const Advertisement = () => {
         <Slider {...settings}>
           {advertised.map((property) => (
             <div key={property._id}>
-              <div className='bg-gray-400 h-[530px] shadow-lg
-               shadow-black p-6 w-72 md:w-96'>
-                <img className='h-64' src={property.propertyImage} alt={`Property`} />
-                <div className='p-4 h-[220px] bg-blue-950 text-white'>
-                  <h3 className='text-2xl'>Location: {property.propertyLocation}</h3>
-                  <h3 className='text-2xl'>Price Range $: {property.priceRangeMin} to ${property.priceRangeMax}</h3>
-                  <h3 className='text-2xl'>Status: {property.verificationStatus}</h3>
-                <div className='flex justify-end py-4 '>
-                <Link to={`/properties/${property.propertyId}`}>
-                    <button className=' px-6 py-1 border border-white
-                     bg-transparent text-white  text-xl '>View details <span className='text-2xl font-bold'>></span> </button>
+             
+              <div className="card 
+              lg:card-side  bg-base-100 shadow-xl">
+  <figure> <img className='lg:h-[300px] relative
+  w-full h-64 lg:w-[600px]' 
+  src={property.propertyImage} 
+  alt={`Property`} />
+     
+  </figure>
+  <div className="card-body 
+  bg-gradient-to-r from-cyan-200
+   to-blue-200">
+        <div className='tooltip mb-4 w-12  tooltip-bottom' data-tip="Top property" >
+<FaChessQueen className='text-3xl tooltip
+      text-green-950'/>
+</div>
+    <h2 className="card-title text-3xl lg:text-5xl
+     text-gray-800 ">Location: 
+     {property.propertyLocation}  </h2>
+
+
+    <h2 className="card-title">Price Range $: {property.priceRangeMin} to ${property.priceRangeMax}</h2>
+    <p className='text-2xl uppercase'>Status:  {property.verificationStatus}</p>
+
+    <div className="card-actions justify-end"> 
+
+    <Link to={`/properties/${property.propertyId}`}>
+                    <button >View details <span className='text-2xl font-bold'></span> </button>
                   </Link>
-                </div>
-                </div>
-              </div>
+    </div>
+  </div>
+</div>
             </div>
           ))}
         </Slider>

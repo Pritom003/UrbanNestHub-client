@@ -1,4 +1,4 @@
-import React from 'react';
+
 import useAxios from '../../../Hooks/UseAxios';
 import { useQuery } from '@tanstack/react-query';
 import { Avatar, Card } from 'keep-react';
@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const UserReview = () => {
   const axiosPublic = useAxios();
-  const { data: latestReviews = [], isLoading, refetch } = useQuery({
+  const { data: latestReviews = [],  } = useQuery({
     queryKey: ['review'],
     queryFn: async () => {
       try {
@@ -39,29 +39,31 @@ const UserReview = () => {
         <h1 className="text-4xl font-semibold">Latest Reviews</h1>
         <h5 className="text-[#93b4ce] text-xl font-medium">What Our Clients Say</h5>
       </div>
-      <div className="slider-container">
-        <Slider {...settings}>
-          {latestReviews.map((review) => (
-            <div key={review._id}>
-              <Card className="max-w-xs h-36 bg-white text-black p-6 md:max-w-lg">
-                <Card.Description className='text-black'>
-                  {review.reviews}
-                </Card.Description>
-                <Card.Container className="flex items-center">
-                  <Avatar size="sm" className='h-10' shape="circle" img={review.reviewerImage} />
-                  <Card.Container className="ml-3">
-                    <Card.Title className="text-body-5 text-black font-semibold md:text-body-4">
-                      {review.reviewerName}
-                    </Card.Title>
-                    <Card.Title className="!text-body-6 text-black font-normal  md:text-body-5">
-                      {review.peopertyTile}
-                    </Card.Title>
-                  </Card.Container>
-                </Card.Container>
-              </Card>
-            </div>
-          ))}
-        </Slider>
+
+      <div className='grid p-20 justify-center align-middle items-center mx-auto grid-cols-3 gap-4'>
+      {/* card .....*/}
+      {latestReviews.map((review) => (
+            <div  key={review._id} className=' ' >
+            
+<div className="card w-72  bg-base-200 shadow-xl">
+  <figure className="px-10 pt-10 border-b-8">
+  <div className="avatar h-16 w-16 flex">
+  <div className="w-24 rounded-full">
+    <img src={review.reviewerImage} />
+  </div>
+</div>
+  </figure>
+  <div className="card-body items-center text-center">
+    <h2 className="card-title">{review.reviewerName}</h2>
+    <p>{review.reviews}</p>
+  
+  </div>
+</div>
+
+
+
+      </div>
+))}
       </div>
     </div>
   );

@@ -63,7 +63,8 @@ const handleAddToWishlist=async()=>{
     
 <div>
   
-  <div className="w-full mx-auto bg-white border border-gray-200 shadow-md rounded-md p-4">
+  <div className="w-full mx-auto mt-36
+   bg-white border border-gray-200 shadow-md rounded-md p-4">
     <div className="flex justify-between">
       <div>
         <h2 className="text-lg uppercase font-semibold text-blue-900 hover:font-bold">

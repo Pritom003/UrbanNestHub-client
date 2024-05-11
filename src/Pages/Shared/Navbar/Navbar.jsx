@@ -53,8 +53,10 @@ const {logout,user}=useAuth()
     <>
 
 
-    <div className='flex  fixed z-50 top-0 
-     w-full first-letter first-lette  first-letter bg-black
+    <div className='flex  fixed z-50 
+    top-0 
+     w-full first-letter first-lette 
+      first-letter bg-blue-950
       text-white justify-between lg:px-24 align-middle items-center '>
     <div >
    
@@ -106,7 +108,8 @@ const {logout,user}=useAuth()
     user ?
     
     <div className=" mt-6">
-    <div className="tooltip" data-tip={user.displayName}>
+    <div className="tooltip" 
+    data-tip={user.displayName}>
     <div className="avatar p-4">
   <div className="w-10 mb-6 rounded-full ring ring-blue-950 ring-offset-base-100 ring-offset-2">
     <img src={user.photoURL} />
