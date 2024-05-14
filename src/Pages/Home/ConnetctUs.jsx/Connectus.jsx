@@ -3,7 +3,7 @@ import React from 'react';
 
 const Connectus = () => {
   return (
-    <div>
+    <div className='my-20'>
     <div className="text-center mt-5 ">
     <h1 className="text-4xl font-semibold">Find Answers to Common Queries</h1>
       <h5 className="text-[#93b4ce] text-xl font-medium">FREQUENTLY ASKED QUESTIONS</h5>

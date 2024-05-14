@@ -1,36 +1,23 @@
-import image2 from '../../assets/banner.jpg';
-import { TypeAnimation } from 'react-type-animation';
-// import moduleName from '../../assets/Yellow Orange Blue White Minimalist Illustration Animation Youtube Intro (1).mp4';
+import bannerimg from '../../assets/finaal.jpg';
 
 const Banner = () => {
   return (
-<div   >
-<div className="hero min-h-[80vh]" style={{backgroundImage: `url(${image2})`}}>
-  <div className="hero-overlay bg-opacity-80"></div>
-  <div className="hero-content text-center text-neutral-content">
-    <div className="max-w-md">
-    <h1 className="mb-5 text-5xl font-bold">URBAN NEST HUBS</h1>
-    <TypeAnimation
-      sequence={[
-        
-        ' Elevate Your Living, Find Your Haven UrbanNestHubs, Your Gateway to Home',
-        1000, 
-   
-      ]}
-      wrapper="span"
-      speed={50}
-      style={{ fontSize: '2rem',
-       display: 'inline-block' }}
-      repeat={Infinity}
-    />
+    <div
+    className="h-[400px]  md:min-h-[80vh] grid 
+  
+    bg-cover bg-no-repeat bg-[#756844cf] bg-blend-overlay "
+    style={{
+      backgroundImage: `url(${bannerimg})`,
+    }}
+  >
+ <div className='absolute left-0 top-72 lg:top-96 ml-8'>
 
-   
-   
+  
+        <h1 className="text-white text-4xl md:text-6xl font-bold">UrbansNestHub</h1>
+        <h1 className="text-white text-3xl md:text-6xl font-bold"> Your dream our destination</h1>
+      </div>
+ 
     </div>
-  </div>
-</div>
-</div>
-
   );
 };
 

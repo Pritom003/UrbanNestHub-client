@@ -1,0 +1,26 @@
+[
+  {
+    "icon": "🏡",
+    "good_point": "Property Listings"
+  },
+  {
+    "icon": "🔍",
+    "good_point": "Advanced Search"
+  },
+  {
+    "icon": "📸",
+    "good_point": "High-Quality Images"
+  },
+  {
+    "icon": "💼",
+    "good_point": "Professional Agents"
+  },
+  {
+    "icon": "🔑",
+    "good_point": "Easy Transactions"
+  },
+  {
+    "icon": "🏢",
+    "good_point": "Commercial Properties"
+  }
+]

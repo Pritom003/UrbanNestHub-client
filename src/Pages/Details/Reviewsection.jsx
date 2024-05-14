@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 const Reviewsection = ({title,prpagentName}) => {
   
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset } = useForm();
   const axiossecure=useAxiosSecure()
   
   const {user}=useAuth()
@@ -25,7 +25,7 @@ const Reviewsection = ({title,prpagentName}) => {
   const onSubmit = async (data) => {
 
     const reviewsData = {
-      Reviewstime: data.time,
+      Reviewstime:new Date().toISOString().slice(0, 10),
     reviews:data.reviews,
     revieweremail:user.email,
     reviewerImage:user.photoURL,
@@ -42,7 +42,7 @@ const Reviewsection = ({title,prpagentName}) => {
 
     if(properties.data.insertedId){
       // show success popup
-    
+      reset();
       refetch()
       Swal.fire({
           position: "top-end",
@@ -67,29 +67,48 @@ const Reviewsection = ({title,prpagentName}) => {
 console.log(reviewsData);
 
   return (
-    <div>
+    <div className=" mx-auto">
 
+<h1 className="p-10"> Comments :</h1>
+<form type="submit" onSubmit={handleSubmit(onSubmit)} >
 
-      
-        <div className="grid grid-cols-2 lg:grid-cols-3 justify-center mt-4 ">
+<div className="mb-4 sm:mb-0 grid w-full ">
+    <label  className=" text-black">
+   
+    </label>
+
+    <input  {...register("reviews", { required: true })}
+      className="mt-1 p-2 rounded-lg border w-96
+        text-black focus:ring
+         focus:ring-indigo-200 focus:outline-none"
+          placeholder='Add Your review'
+    
+  name="reviews"
+  
+></input>
+     
+  </div>
+ 
+</form>
+        <div className="grid ">
         {reviewsData
   .filter((data) => data.peopertyTile === title)
   .map((data, index) => (
- <div className="card p-10 contailner" key={index}>
+ <div className="card p-10 contailner border-b-2" key={index}>
 
 <div   className="chat chat-start">
   <div className="avatar flex justify-end align-bottom items-end">
     <div className="w-10 rounded-full">
       {
-        data.reviewerImage?<img alt="Tailwind CSS chat bubble component" 
+        data.reviewerImage?<img  alt="Tailwind CSS chat bubble component" 
         src={data.reviewerImage}/>:<FaUser className="text-3xl text-center"></FaUser>
 
       }
       
     </div>
   </div>
-  <div className="chat-bubble">{data. reviews} <br />
-  <p>{data.revieweremail}</p></div>
+  <div className="">{data. reviews} <br />
+  <p  className="text-xs font-extralight">{data.revieweremail}</p></div>
 </div>
  </div>
 
@@ -103,46 +122,8 @@ console.log(reviewsData);
 
 {/* You can open the modal using document.getElementById('ID').showModal() method */}
 <div className="flex justify-center " >
-<button className="btn bg-gray-50 text-black w-full " onClick={()=>document.getElementById('my_modal_3').showModal()}>add review</button>
-<dialog id="my_modal_3" className="modal">
-  <div className="modal-box bg-slate-400">
-    <form method="dialog">
-      {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
-<div className="mx-auto  h-56">
-<form onSubmit={handleSubmit(onSubmit)} >
 
-<div className="mb-4 sm:mb-0 grid w-full ">
-    <label className="block text-sm font-medium gap-2 flex text-black">
-    <FaPen></FaPen> Your feedback about the property
-    </label>
 
-    <textarea  {...register("reviews", { required: true })}
-      className="mt-1 p-2 rounded-lg border border-gray-300 text-black focus:ring focus:ring-indigo-200 focus:outline-none w-full"
-    
-  name="reviews"
-  
-></textarea>
-     
-  </div>
-  <div className="mb-4 sm:mb-0">
-            <label className="block text-sm font-medium text-purple-700">
-              Time
-            </label>
-            <input
-              type="date"
-              name="time"
-              {...register("time", { required: true })}
-              className="mt-1 p-2 rounded-lg border border-gray-300 focus:ring focus:ring-indigo-200 focus:outline-none w-full"
-            />
-          </div>
-          <button type="submit" className="btn btn-outline w-full mx-auto bg-slate-400 btn-primary"> submit review</button>
-     
-</form>
-</div>
-  </div>
-</dialog>
 </div>
 
 

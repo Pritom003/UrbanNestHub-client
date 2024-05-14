@@ -5,7 +5,7 @@ import { Avatar, Card } from 'keep-react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import imageBg from '../../../assets/bgre.png';
 const UserReview = () => {
   const axiosPublic = useAxios();
   const { data: latestReviews = [],  } = useQuery({
@@ -21,42 +21,42 @@ const UserReview = () => {
     },
   });
 
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
-    speed: 500,
-    // autoplay: true,
-    rows: 1,
-    slidesPerRow: 1
-  };
+
 
   return (
-    <div>
+    <div className=''>
       <div className="text-center mt-20 mb-5">
         <h1 className="text-4xl font-semibold">Latest Reviews</h1>
         <h5 className="text-[#93b4ce] text-xl font-medium">What Our Clients Say</h5>
       </div>
 
-      <div className='grid p-20 justify-center align-middle items-center mx-auto grid-cols-3 gap-4'>
+      <div
+      id="my-id"
+      className=" min-h-[500px] bg-blend-darken py-8 items-center bg-fixed  "
+      style={{
+        backgroundImage: `url(https://i.ibb.co/L0Qv9KC/Screenshot-2024-05-11-232324.png)`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize:'cover'
+      }}
+    >
+    <div className='grid  justify-center align-middle 
+    items-center mx-auto  gap-4'>
       {/* card .....*/}
       {latestReviews.map((review) => (
             <div  key={review._id} className=' ' >
             
-<div className="card w-72  bg-base-200 shadow-xl">
-  <figure className="px-10 pt-10 border-b-8">
-  <div className="avatar h-16 w-16 flex">
-  <div className="w-24 rounded-full">
-    <img src={review.reviewerImage} />
-  </div>
-</div>
-  </figure>
-  <div className="card-body items-center text-center">
-    <h2 className="card-title">{review.reviewerName}</h2>
+<div
+data-aos="fade-up"
+data-aos-duration="3000"
+className="  bg-[#e9d3ad] shadow-xl w-[400px] rounded-3xl h-24">
+
+  <div  className='flex  py-2 pl-4 justify-start  align-middle items-center'>
+    <img className='w-16 rounded-full p-2' src={review.reviewerImage} alt="" />
+    <div>
     <p>{review.reviews}</p>
-  
+      <p>{review.reviewerName}</p>
+
+    </div>
   </div>
 </div>
 
@@ -65,6 +65,8 @@ const UserReview = () => {
       </div>
 ))}
       </div>
+    </div>
+
     </div>
   );
 };

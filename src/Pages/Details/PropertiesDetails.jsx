@@ -54,16 +54,19 @@ const handleAddToWishlist=async()=>{
 }
 
 
-
+console.log(agentImage);
 
 
   return (
     <div>
       <Navbar />
+<div className="lg:flex grid mt-32 gap-10 px-10">
+<div className="  mx-auto ">
+      <img className="w-[100vw] h-[60vh]" src={imageUrl} alt="" />
     
-<div>
+
   
-  <div className="w-full mx-auto mt-36
+  <div className="w-full mx-auto 
    bg-white border border-gray-200 shadow-md rounded-md p-4">
     <div className="flex justify-between">
       <div>
@@ -73,8 +76,8 @@ const handleAddToWishlist=async()=>{
         <p className="text-sm text-gray-600">By {agentName}</p>
       </div>
       {/* Replace this with your actual image */}
-      <img src={imageUrl} alt="Image" className="bg-blue-500 rounded-full 
-      h-16 w-44" />
+      <img src={agentImage} alt="Image" className="bg-blue-500 h-16 border-2 border-black w-16 rounded-full 
+      " />
     </div>
     <p className="text-sm text-gray-700 mt-2">
       {descrption}
@@ -102,15 +105,16 @@ const handleAddToWishlist=async()=>{
       </div>
     </dl>
   </div>
-
-  <div>
+  </div>
+  <div className="bg-slate-100 px-10">
     <Reviewsection title={title} prpagentName={agentName} />
   </div>
+</div>
 </div>
 
 
  
-    </div>
+  
   );
 };
 
